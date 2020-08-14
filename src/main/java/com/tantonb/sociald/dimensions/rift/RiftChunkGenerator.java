@@ -1,4 +1,4 @@
-package com.tantonb.sociald.dimensions;
+package com.tantonb.sociald.dimensions.rift;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;

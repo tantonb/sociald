@@ -1,7 +1,10 @@
 package com.tantonb.sociald.dimensions;
 
 import com.tantonb.sociald.Sociald;
+import com.tantonb.sociald.dimensions.rift.RiftDimensionEntry;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.ModDimension;
@@ -10,18 +13,20 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static com.tantonb.sociald.Sociald.MOD_ID;
 
 
 public class SocialdDimensions {
 
-    /*
-    public class RiftDimensionEntry extends ModDimension {
-        @Override
-        public BiFunction<World, DimensionType, ? extends Dimension> getFactory() { return RiftDimension::new; }
-    }
-    */
+    private static final Logger LOGGER = LogManager.getLogger();
 
     // creates a dimensions registry
     private static final DeferredRegister<ModDimension> SOCD_DIM_REGISTRY =
@@ -47,14 +52,13 @@ public class SocialdDimensions {
     // dimension "types" that will be returned from forge's DimensionManager.registerOrGetDimension(...)
     public static DimensionType SOCD_DIM_RIFT;
 
+    private static DimensionType registerDimension(ResourceLocation name, ModDimension type, PacketBuffer data, boolean hasSkyLight) {
+        return DimensionManager.registerOrGetDimension(name, type, data, hasSkyLight);
+    }
+
     // called by ModSetup.onRegisterDimensions()
     public static void registerDimensions(RegisterDimensionsEvent event) {
-        SOCD_DIM_RIFT = DimensionManager.registerOrGetDimension(
-                SOCD_DIM_NAME_RIFT,
-                SOCD_DIM_ENTRY_RIFT.get(),
-                null,
-                true
-            );
+        SOCD_DIM_RIFT = registerDimension(SOCD_DIM_NAME_RIFT, SOCD_DIM_ENTRY_RIFT.get(), null, true);
     }
 
 }

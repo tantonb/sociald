@@ -10,7 +10,8 @@ public class SocialdCommands {
         // register sociald command set
         LiteralCommandNode<CommandSource> socdCommand = dispatcher.register(
                 Commands.literal("socd")
-                        .then(TpCommand.register(dispatcher))
+                        .then(DimCommand.register())
+                        .then(TpCommand.register())
         );
     }
 }

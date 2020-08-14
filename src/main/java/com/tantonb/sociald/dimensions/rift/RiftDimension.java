@@ -1,4 +1,4 @@
-package com.tantonb.sociald.dimensions;
+package com.tantonb.sociald.dimensions.rift;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
