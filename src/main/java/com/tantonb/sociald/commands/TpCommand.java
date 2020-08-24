@@ -33,10 +33,10 @@ public class TpCommand implements Command<CommandSource> {
         ServerPlayerEntity player = context.getSource().asPlayer();
         int x = player.getPosition().getX();
         int z = player.getPosition().getZ();
-        if (player.dimension.equals(SocialdDimensions.SOCD_DIM_RIFT)) {
+        if (player.dimension.equals(SocialdDimensions.SOCD_DIM_SINCOS)) {
             TeleportationTools.teleport(player, DimensionType.OVERWORLD, new BlockPos(x, 200, z));
         } else {
-            TeleportationTools.teleport(player, SocialdDimensions.SOCD_DIM_RIFT, new BlockPos(x, 200, z));
+            TeleportationTools.teleport(player, SocialdDimensions.SOCD_DIM_SINCOS, new BlockPos(x, 200, z));
         }
         return 0;
     }

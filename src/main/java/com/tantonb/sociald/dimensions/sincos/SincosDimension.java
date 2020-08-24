@@ -1,4 +1,4 @@
-package com.tantonb.sociald.dimensions.rift;
+package com.tantonb.sociald.dimensions.sincos;
 
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
@@ -10,13 +10,13 @@ import net.minecraft.world.gen.ChunkGenerator;
 
 import javax.annotation.Nullable;
 
-public class RiftDimension extends Dimension {
+public class SincosDimension extends Dimension {
 
-    public RiftDimension(World world, DimensionType type) { super(world, type, 0.0f); }
+    public SincosDimension(World world, DimensionType type) { super(world, type, 0.0f); }
 
     @Override
     public ChunkGenerator<?> createChunkGenerator() {
-        return new RiftChunkGenerator(world, new RiftBiomeProvider());
+        return new SincosChunkGenerator(world, new SincosBiomeProvider());
     }
 
     @Nullable

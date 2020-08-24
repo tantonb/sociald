@@ -1,4 +1,4 @@
-package com.tantonb.sociald.dimensions.rift;
+package com.tantonb.sociald.dimensions.sincos;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -12,8 +12,8 @@ import net.minecraft.world.gen.GenerationSettings;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.WorldGenRegion;
 
-public class RiftChunkGenerator extends ChunkGenerator<RiftChunkGenerator.Config> {
-    public RiftChunkGenerator(IWorld world, BiomeProvider provider) {
+public class SincosChunkGenerator extends ChunkGenerator<SincosChunkGenerator.Config> {
+    public SincosChunkGenerator(IWorld world, BiomeProvider provider) {
         super(world, provider, Config.createDefault());
     }
 
@@ -53,7 +53,7 @@ public class RiftChunkGenerator extends ChunkGenerator<RiftChunkGenerator.Config
     }
 
     @Override
-    public int func_222529_a(int p_222529_1_, int p_222529_2_, Heightmap.Type heightmapType) {
+    public int getHeight(int p_222529_1_, int p_222529_2_, Heightmap.Type heightmapType) {
         return 0;
     }
 

@@ -1,10 +1,10 @@
 package com.tantonb.sociald.dimensions;
 
 import com.tantonb.sociald.Sociald;
-import com.tantonb.sociald.dimensions.rift.RiftDimensionEntry;
+import com.tantonb.sociald.dimensions.depths.DepthsDimensionEntry;
+import com.tantonb.sociald.dimensions.sincos.SincosDimensionEntry;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.ModDimension;
@@ -15,11 +15,6 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 import static com.tantonb.sociald.Sociald.MOD_ID;
 
@@ -34,8 +29,10 @@ public class SocialdDimensions {
 
     // register mod dimension factory factories in the registry
     // (java suppliers that provide factory factory constructor)
-    public static final RegistryObject<RiftDimensionEntry> SOCD_DIM_ENTRY_RIFT =
-            SOCD_DIM_REGISTRY.register("the_rift", RiftDimensionEntry::new);
+    public static final RegistryObject<SincosDimensionEntry> SOCD_DIM_ENTRY_SINCOS =
+            SOCD_DIM_REGISTRY.register("sincos", SincosDimensionEntry::new);
+    public static final RegistryObject<DepthsDimensionEntry> SOCD_DIM_ENTRY_DEPTHS =
+            SOCD_DIM_REGISTRY.register("depths", DepthsDimensionEntry::new);
 
     public static void init() {
         // add the dim factory entries in the dim registry to the
@@ -46,11 +43,14 @@ public class SocialdDimensions {
     }
 
     // these are used during register dimensions event handling...
-    public static final ResourceLocation SOCD_DIM_NAME_RIFT =
-            new ResourceLocation(Sociald.MOD_ID, "the_rift");
+    public static final ResourceLocation SOCD_DIM_NAME_SINCOS =
+            new ResourceLocation(Sociald.MOD_ID, "sincos");
+    public static final ResourceLocation SOCD_DIM_NAME_DEPTHS =
+            new ResourceLocation(Sociald.MOD_ID, "depths");
 
     // dimension "types" that will be returned from forge's DimensionManager.registerOrGetDimension(...)
-    public static DimensionType SOCD_DIM_RIFT;
+    public static DimensionType SOCD_DIM_SINCOS;
+    public static DimensionType SOCD_DIM_DEPTHS;
 
     private static DimensionType registerDimension(ResourceLocation name, ModDimension type, PacketBuffer data, boolean hasSkyLight) {
         return DimensionManager.registerOrGetDimension(name, type, data, hasSkyLight);
@@ -58,7 +58,8 @@ public class SocialdDimensions {
 
     // called by ModSetup.onRegisterDimensions()
     public static void registerDimensions(RegisterDimensionsEvent event) {
-        SOCD_DIM_RIFT = registerDimension(SOCD_DIM_NAME_RIFT, SOCD_DIM_ENTRY_RIFT.get(), null, true);
+        SOCD_DIM_SINCOS = registerDimension(SOCD_DIM_NAME_SINCOS, SOCD_DIM_ENTRY_SINCOS.get(), null, true);
+        SOCD_DIM_DEPTHS = registerDimension(SOCD_DIM_NAME_DEPTHS, SOCD_DIM_ENTRY_DEPTHS.get(), null, true);
     }
 
 }

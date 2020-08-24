@@ -1,4 +1,4 @@
-package com.tantonb.sociald.dimensions.rift;
+package com.tantonb.sociald.dimensions.sincos;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.world.biome.Biome;
@@ -11,12 +11,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class RiftBiomeProvider extends BiomeProvider {
+public class SincosBiomeProvider extends BiomeProvider {
 
     private final Biome biome;
     private static final List<Biome> SPAWN = Collections.singletonList(Biomes.PLAINS);
 
-    public RiftBiomeProvider() {
+    public SincosBiomeProvider() {
         super(new HashSet<>(SPAWN));
         biome = Biomes.PLAINS;
     }
